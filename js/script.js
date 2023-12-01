@@ -1,8 +1,17 @@
 // Punto 1 readme.md
 // Creo la funzione che mi genera numeri casuali da 1 a 100
 function createNumbers(num){
-    let number = Math.floor(Math.random() * 100 + 1);
+    let flag = false;
+    let number;
 
+    while(flag == false){
+        number = Math.floor(Math.random() * 100 + 1);
+
+        if(num.includes(number) == false){
+            flag = true;
+        }
+    }
+    
     return number;
 }
 
@@ -11,7 +20,7 @@ function createNumbers(num){
 function arrayNumbers(){
     let array = [];
     
-    for(let i=0; i<5; i++){
+    for(let i=0; i<2; i++){
         array.push(createNumbers(array));
     }
     
@@ -19,13 +28,13 @@ function arrayNumbers(){
 }
 
 // Riprendo l'elemento in html per mostrare a video i numeri
-let video = document.getElementById('numbers');
-video.innerText = arrayNumbers();
+let video = arrayNumbers();
+document.getElementById('numbers').innerText = video;
 
 // Punto 3 readme.md
 // SetTimeout dopo 30 secondi nascondi numeri
 setTimeout(function(){
-    video.innerText = '';
+    document.getElementById('numbers').innerText = '';
     document.getElementById('h1').innerText = '';
     document.getElementById('h2').innerText = 'Ora inserisci i numeri'
 }, 5000) 
@@ -33,17 +42,27 @@ setTimeout(function(){
 // Punto 4 readme.md
 // SetTimeout per far inserire i numeri all'utente
 setTimeout(function(){
-    let user;
+    let user = [];
+    let user_num;
 
-    for(let i=0; i<5; i++){
-        user = parseInt(prompt('Inserisci un numero'));
+    // Creo un array di 5 numeri inseriti dall'utente
+    for(let i=0; i<2; i++){
+        user_num = parseInt(prompt('Inserisci un numero'));
+        user.push(user_num);
+        
+        // Confronto l'array di numeri generati casualmente dall'array di numeri inseriti dall'utente
+        if(arrayNumbers() == user){
+            document.getElementById('result').innerText = 'YOU WIN!!!';
+        }
+        else{
+            document.getElementById('result').innerText = 'YOU LOSE...';
+        }
     }
 
-    if(arrayNumbers().includes(user)){
-        console.log(true);
-    }
-    else{
-        console.log(false);
-    }
-    
+
+    // Mostro nella pagina i risultati
+    document.getElementById('h2').innerText = '';
+    document.getElementById('numbers').innerText = `I numeri erano: ${video}`;
+    document.getElementById('user-numbers').innerText = `Tu hai inserito: ${user}`;
+
 }, 6000)
