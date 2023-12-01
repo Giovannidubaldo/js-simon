@@ -28,14 +28,22 @@ setTimeout(function(){
     video.innerText = '';
     document.getElementById('h1').innerText = '';
     document.getElementById('h2').innerText = 'Ora inserisci i numeri'
-}, 3000) 
+}, 5000) 
 
 // Punto 4 readme.md
 // SetTimeout per far inserire i numeri all'utente
 setTimeout(function(){
-    // let num_1 = parseInt(prompt('Ora inserisci il primo numero'));
-    // let num_2 = parseInt(prompt('Inserisci il secondo numero'));
-    // let num_3 = parseInt(prompt('Inserisci il terzo nuemro'));
-    // let num_4 = parseInt(prompt('Inserisci il quarto numero'));
-    // let num_5 = parseInt(prompt('Inserisci il quinto numero'));
-}, 4000)
+    let user;
+
+    for(let i=0; i<5; i++){
+        user = parseInt(prompt('Inserisci un numero'));
+    }
+
+    if(arrayNumbers().includes(user)){
+        console.log(true);
+    }
+    else{
+        console.log(false);
+    }
+    
+}, 6000)
