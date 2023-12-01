@@ -14,9 +14,16 @@ function arrayNumbers(){
     for(let i=0; i<5; i++){
         array.push(createNumbers(array));
     }
-
-    console.log(array);
+    
     return array
 }
 
-arrayNumbers();
+// Riprendo l'elemento in html per mostrare a video i numeri
+let video = document.getElementById('numbers');
+video.innerText = arrayNumbers();
+
+// Punto 3 readme.md
+// SetTimeout dopo 30 secondi nascondi numeri
+setTimeout(function(){
+    video.innerText = '';
+}, 30000) 
