@@ -20,7 +20,7 @@ function createNumbers(num){
 function arrayNumbers(){
     let array = [];
     
-    for(let i=0; i<2; i++){
+    for(let i=0; i<5; i++){
         array.push(createNumbers(array));
     }
     
@@ -37,7 +37,7 @@ setTimeout(function(){
     document.getElementById('numbers').innerText = '';
     document.getElementById('h1').innerText = '';
     document.getElementById('h2').innerText = 'Ora inserisci i numeri'
-}, 5000) 
+}, 30000) 
 
 // Punto 4 readme.md
 // SetTimeout per far inserire i numeri all'utente
@@ -46,23 +46,22 @@ setTimeout(function(){
     let user_num;
 
     // Creo un array di 5 numeri inseriti dall'utente
-    for(let i=0; i<2; i++){
+    for(let i=0; i<5; i++){
         user_num = parseInt(prompt('Inserisci un numero'));
         user.push(user_num);
         
         // Confronto l'array di numeri generati casualmente dall'array di numeri inseriti dall'utente
-        if(arrayNumbers() == user){
+        if(arrayNumbers == user){
             document.getElementById('result').innerText = 'YOU WIN!!!';
         }
         else{
             document.getElementById('result').innerText = 'YOU LOSE...';
         }
     }
-
-
+    
     // Mostro nella pagina i risultati
     document.getElementById('h2').innerText = '';
     document.getElementById('numbers').innerText = `I numeri erano: ${video}`;
     document.getElementById('user-numbers').innerText = `Tu hai inserito: ${user}`;
-
-}, 6000)
+    
+}, 31000)
