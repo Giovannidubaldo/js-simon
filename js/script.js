@@ -46,16 +46,24 @@ setTimeout(function(){
     let user_num;
 
     // Creo un array di 5 numeri inseriti dall'utente
-    for(let i=0; i<5; i++){
+    while(user.length<5){
         user_num = parseInt(prompt('Inserisci un numero'));
-        user.push(user_num);
-        
-        // Confronto l'array di numeri generati casualmente dall'array di numeri inseriti dall'utente
-        if(arrayNumbers == user){
-            document.getElementById('result').innerText = 'YOU WIN!!!';
+
+        if(isNaN(user_num) == false){
+            user.push(user_num);
+        }
+    }
+
+    // Verifico i numeri indovinati
+    let result = [];
+    
+    for(let i=0; i<user.length; i++){
+        if(video.includes(user[i])){
+            result.push(user[i]);
+            document.getElementById('result').innerText = 'YOU WIN!!!'
         }
         else{
-            document.getElementById('result').innerText = 'YOU LOSE...';
+            document.getElementById('result').innerText = 'You Lose...'
         }
     }
     
